@@ -1,0 +1,58 @@
+import requests
+import pandas as pd
+
+# Base API URL
+base_url = "https://www.data.gov.qa/api/explore/v2.1/catalog/datasets/weekly-real-estate-newsletter/records"
+
+# Valid fields in dataset
+select_fields = "date_of_contract,municipality_name,zone_name,real_estate_type,area_in_square_meters,price_per_square_foot"
+
+# List of municipalities
+municipalities = ["Doha", "Al Rayyan", "Al Wakrah", "Umm Salal", "Al Khor"]
+
+# Store all data
+all_data = []
+
+# Loop through each municipality
+for municipality in municipalities:
+    print(f"📢 Fetching data for {municipality}...")
+
+    offset = 0  # Start from first record
+
+    while True:
+        # Define API parameters
+        params = {
+            "select": select_fields,
+            "where": f"municipality_name='{municipality}'",
+            "order_by": "date_of_contract DESC",
+            "limit": 100,  # Fetch 100 records at a time
+            "offset": offset
+        }
+
+        # Send request
+        response = requests.get(base_url, params=params)
+
+        if response.status_code == 200:
+            data = response.json().get("results", [])
+
+            if not data:
+                print(f"✅ No more data for {municipality}. Moving to next...")
+                break  # Stop if no more data
+
+            all_data.extend(data)
+            print(f"✅ Fetched {len(all_data)} records so far...")
+
+            offset += 100  # Move to next batch
+
+        else:
+            print(f"❌ Failed to fetch data for {municipality}! Status Code: {response.status_code}")
+            print("🔍 Error Message:", response.text)
+            break  # Stop on API failure
+
+# Save to CSV
+df = pd.DataFrame(all_data)
+df.to_csv("qatar_real_estate_data.csv", index=False)
+print("✅ Data fetching complete! File saved as qatar_real_estate_data.csv")
+
+
+
