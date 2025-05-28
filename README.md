@@ -11,7 +11,7 @@ This project aims to analyze real estate transactions in Qatar to uncover insigh
 
 - **API Scraping of Real Estate Data** from the Qatar Government Open Data Portal  
 - **Exploratory Data Analysis (EDA)** using Python (Jupyter Notebook)  
-- **(Upcoming)** Power BI Dashboard for visual representation
+-  **Power BI Dashboard** for visual representation
 
 ---
 
@@ -28,7 +28,7 @@ This project aims to analyze real estate transactions in Qatar to uncover insigh
 - **Python** (Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn)
 - **Jupyter Notebook**
 - **API Requests in VS Code**
-- **Power BI** *(visual dashboard – coming soon)*
+- **Power BI** *(visual dashboard )*
 - **GitHub** for version control and publication
 
 ---
@@ -49,7 +49,7 @@ This project aims to analyze real estate transactions in Qatar to uncover insigh
 - Developed using regression techniques to forecast property prices
 - Features used: property area, municipality, zone, and type
 
-### 4. Power BI Dashboard *(Upcoming)*
+### 4. Power BI Dashboard 
 - Interactive visual report showcasing:
   - Average prices by area and property type
   - Price trends over time
@@ -65,7 +65,7 @@ Key Findings:
 - Residential types dominate transaction volume
 - Certain zones like Al Mirqab and The Pearl show highest value density
 
-*(Visuals and detailed dashboard will be uploaded shortly)*
+
 
 ---
 
